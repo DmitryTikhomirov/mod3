@@ -1,0 +1,61 @@
+<html xmlns:id="http://java.sun.com/xml/ns/persistence/orm">
+<head>
+    <title>PROJECT MODULE 3</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <link rel="stylesheet" href="/css/my.css" >
+    <!--meta charSet="windows-1251"-->
+</head>
+<body onload="show_list2(1)">
+<h1>The parable</h1>
+<table id="table_1" >
+  <tr>
+      <td></td>
+  </tr>
+</table>
+<div id="paging_buttons"></div>
+<script>
+
+function show_list2(id){
+        let url = "rest/carts/" + id;
+         let res= "";
+         let but1 = "but";
+    $.ajax({
+        url: url,
+        async: false,
+        type: 'GET',
+        success: function (result){
+            console.log("result: " + result);
+            res = result;
+        }
+    });
+
+    $("tr:has(td)").remove();
+
+    $('<tr>').html("<td>"
+        + res.content + "</td>"
+    ).appendTo("#table_1");
+
+    $("button.pgn-bnt-styled").remove();
+
+    let button_tag = "<button>" + res.button1 + "</button>";
+    let bin = $(button_tag)
+        .attr('id', "paging_button_" + 1)
+        .attr('onclick', "show_list2(" + res.nextCart1 + ")")
+        .addClass('pgn-bnt-styled');
+    $('#paging_buttons').append(bin);
+
+     if(res.button2 != null){
+         button_tag = "<button>" + res.button2 + "</button>";
+         bin = $(button_tag)
+             .attr('id', "paging_button_" + 2)
+             .attr('onclick', "show_list2(" + res.nextCart2 + ")")
+             .addClass('pgn-bnt-styled');
+         $('#paging_buttons').append(bin);
+     }
+
+}
+
+</script>
+
+</body>
+</html>
