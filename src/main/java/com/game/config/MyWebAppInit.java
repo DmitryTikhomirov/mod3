@@ -4,6 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+//изменение для Pr
 
 public class MyWebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -11,7 +12,6 @@ public class MyWebAppInit extends AbstractAnnotationConfigDispatcherServletIniti
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
     }
-
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{AppConfig.class};

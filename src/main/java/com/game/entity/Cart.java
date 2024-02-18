@@ -1,5 +1,4 @@
 package com.game.entity;
-
 public class Cart  {
     private Long id;
     private String content;
@@ -7,6 +6,7 @@ public class Cart  {
     private int nextCart1;
     private String button2;
     private int nextCart2;
+
 
     public Cart(Long id, String content, String button1, int nextCart1, String button2, int nextCart2) {
         this.id = id;
